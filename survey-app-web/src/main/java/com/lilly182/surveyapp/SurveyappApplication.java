@@ -1,4 +1,4 @@
-package com.lilly182.surveyapp.surveyapp;
+package com.lilly182.surveyapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
