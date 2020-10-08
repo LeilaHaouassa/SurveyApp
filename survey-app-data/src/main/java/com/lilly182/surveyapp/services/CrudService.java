@@ -1,13 +1,15 @@
 package com.lilly182.surveyapp.services;
 
+import java.util.Set;
+
 public interface CrudService<T,ID> {
-    Iterable<T> list();
+    Set<T> findAll();
 
-    T create(T object);
+    T findById(ID id);
 
-    T read(ID id);
+    T save(T object);
 
-    T update(ID id, T object);
+    void delete(T object);
 
-    void delete(ID id);
+    void deleteById(ID id);
 }
