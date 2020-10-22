@@ -7,13 +7,13 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+//@Entity
 @Getter
 @Setter
-public class QuestionAndAnswer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class QuestionAndAnswer extends BaseEntity{
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
     private String text;
     @Enumerated(value = EnumType.STRING)
     private QuestionType questionType;

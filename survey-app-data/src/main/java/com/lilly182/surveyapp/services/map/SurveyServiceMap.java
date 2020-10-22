@@ -1,11 +1,12 @@
 package com.lilly182.surveyapp.services.map;
 
 import com.lilly182.surveyapp.model.Survey;
-import com.lilly182.surveyapp.services.CrudService;
+import com.lilly182.surveyapp.services.SurveyService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
-public class SurveyServiceMap extends AbstractMapService<Survey,Long> implements CrudService<Survey,Long> {
+@Service
+public class SurveyServiceMap extends AbstractMapService<Survey,Long> implements SurveyService {
     @Override
     public Set<Survey> findAll() {
         return super.findAll();
@@ -18,7 +19,7 @@ public class SurveyServiceMap extends AbstractMapService<Survey,Long> implements
 
     @Override
     public Survey save(Survey survey) {
-        return super.save(survey.getId(),survey);
+        return super.save(survey);
     }
 
     @Override
@@ -29,5 +30,10 @@ public class SurveyServiceMap extends AbstractMapService<Survey,Long> implements
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Survey> listForAdmin() {
+        return null;
     }
 }

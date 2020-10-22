@@ -6,5 +6,21 @@
 </head>
 <body>
     <h1 th:text="'List of Questions'">List of Questions ...</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>text</th>
+            <th>Question type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${questions}">
+            <td th:text="${question?.getId()}">1</td>
+            <td th:text="${question?.getText()}">what's your favourite color?</td>
+            <td th:text="${question?.getQuestionType()}">IDK</td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

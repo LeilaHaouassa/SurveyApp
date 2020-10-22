@@ -1,11 +1,12 @@
 package com.lilly182.surveyapp.services.map;
 
 import com.lilly182.surveyapp.model.QuestionAndAnswer;
-import com.lilly182.surveyapp.services.CrudService;
+import com.lilly182.surveyapp.services.QuestionService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
-public class QuestionAndAnswerMap extends AbstractMapService<QuestionAndAnswer,Long> implements CrudService<QuestionAndAnswer,Long> {
+@Service
+public class QuestionServiceMap extends AbstractMapService<QuestionAndAnswer,Long> implements QuestionService {
     @Override
     public Set<QuestionAndAnswer> findAll() {
         return super.findAll();
@@ -18,7 +19,7 @@ public class QuestionAndAnswerMap extends AbstractMapService<QuestionAndAnswer,L
 
     @Override
     public QuestionAndAnswer save(QuestionAndAnswer questionAndAnswer) {
-        return super.save(questionAndAnswer.getId(),questionAndAnswer);
+        return super.save(questionAndAnswer);
     }
 
     @Override

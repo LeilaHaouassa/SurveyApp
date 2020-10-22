@@ -7,4 +7,25 @@
 <body>
     <h1 th:text="'List of Surveys'"> List of Surveys...</h1>
 </body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Posted On</th>
+        <th>Posted Off</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="survey : ${surveys}">
+        <td th:text="${survey?.getId()}">1</td>
+        <td th:text="${survey?.getTitle()}">IDK</td>
+        <td th:text="${survey?.getDescription()}">what's your favourite color?</td>
+        <td th:text="${survey?.getPostedOn()}">1</td>
+        <td th:text="${survey?.getPostedOff()}">1</td>
+
+    </tr>
+    </tbody>
 </html>
