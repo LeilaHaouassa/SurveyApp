@@ -33,7 +33,7 @@ public class DataLoader implements CommandLineRunner {
         survey.setDescription("survey for test");
         survey.setCreationDate(new Date());
         survey.setPostedOn(new Date());
-        survey.setPostedOff(new Date(2020, Calendar.OCTOBER,25));
+        survey.setPostedOff(new Date(2020, Calendar.OCTOBER,30));
 
         QuestionAndAnswer question1= new QuestionAndAnswer();
 
