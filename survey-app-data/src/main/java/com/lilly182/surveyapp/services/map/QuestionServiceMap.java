@@ -1,30 +1,30 @@
 package com.lilly182.surveyapp.services.map;
 
-import com.lilly182.surveyapp.model.QuestionAndAnswer;
+import com.lilly182.surveyapp.model.QuestionAndOption;
 import com.lilly182.surveyapp.services.QuestionService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
-public class QuestionServiceMap extends AbstractMapService<QuestionAndAnswer,Long> implements QuestionService {
+public class QuestionServiceMap extends AbstractMapService<QuestionAndOption,Long> implements QuestionService {
     @Override
-    public Set<QuestionAndAnswer> findAll() {
+    public Set<QuestionAndOption> findAll() {
         return super.findAll();
     }
 
     @Override
-    public QuestionAndAnswer findById(Long id) {
+    public QuestionAndOption findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public QuestionAndAnswer save(QuestionAndAnswer questionAndAnswer) {
-        return super.save(questionAndAnswer);
+    public QuestionAndOption save(QuestionAndOption questionAndOption) {
+        return super.save(questionAndOption);
     }
 
     @Override
-    public void delete(QuestionAndAnswer questionAndAnswer) {
-        super.delete(questionAndAnswer);
+    public void delete(QuestionAndOption questionAndOption) {
+        super.delete(questionAndOption);
     }
 
     @Override

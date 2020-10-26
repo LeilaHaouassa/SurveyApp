@@ -1,6 +1,6 @@
 package com.lilly182.surveyapp.bootstrap;
 
-import com.lilly182.surveyapp.model.QuestionAndAnswer;
+import com.lilly182.surveyapp.model.QuestionAndOption;
 import com.lilly182.surveyapp.model.QuestionType;
 import com.lilly182.surveyapp.model.Survey;
 import com.lilly182.surveyapp.services.QuestionService;
@@ -35,19 +35,19 @@ public class DataLoader implements CommandLineRunner {
         survey.setPostedOn(new Date());
         survey.setPostedOff(new Date(2020, Calendar.OCTOBER,30));
 
-        QuestionAndAnswer question1= new QuestionAndAnswer();
+        QuestionAndOption question1= new QuestionAndOption();
 
         question1.setQuestionType(QuestionType.PARAGRAPH);
         question1.setText("question number 1");
         question1.setSurvey(survey);
 
-        QuestionAndAnswer question2= new QuestionAndAnswer();
+        QuestionAndOption question2= new QuestionAndOption();
 
         question2.setQuestionType(QuestionType.SHORT_ANSWER);
         question2.setText("question number 2");
         question2.setSurvey(survey);
 
-        QuestionAndAnswer question3= new QuestionAndAnswer();
+        QuestionAndOption question3= new QuestionAndOption();
 
         question3.setQuestionType(QuestionType.MULTIPLE_CHOICES);
         question3.setText("question number 3");

@@ -1,8 +1,8 @@
 package com.lilly182.surveyapp.services;
 
-import com.lilly182.surveyapp.model.QuestionAndAnswer;
+import com.lilly182.surveyapp.model.QuestionAndOption;
 
-public interface QuestionService extends CrudService<QuestionAndAnswer,Long> {
+public interface QuestionService extends CrudService<QuestionAndOption,Long> {
 
 
 }
