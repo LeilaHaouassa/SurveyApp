@@ -2,11 +2,13 @@ package com.lilly182.surveyapp.services.map;
 
 import com.lilly182.surveyapp.model.Survey;
 import com.lilly182.surveyapp.services.SurveyService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class SurveyServiceMap extends AbstractMapService<Survey,Long> implements SurveyService {
     @Override
     public Set<Survey> findAll() {
