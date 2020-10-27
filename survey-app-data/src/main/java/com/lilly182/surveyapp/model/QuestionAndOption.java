@@ -1,7 +1,6 @@
 package com.lilly182.surveyapp.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,6 +9,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "questions")
 public class QuestionAndOption extends BaseEntity{
     @Column(name = "text")

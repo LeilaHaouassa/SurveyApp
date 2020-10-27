@@ -1,7 +1,6 @@
 package com.lilly182.surveyapp.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,6 +12,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "surveys")
 public class Survey extends BaseEntity{
     @Column(name = "title")
