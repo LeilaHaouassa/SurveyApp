@@ -15,7 +15,7 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    @RequestMapping({"","/","/index","/index.html"})
+    @RequestMapping({"","/"})
     public String listQuestions(Model model){
         model.addAttribute("questions",questionService.findAll());
         return "questions/index";

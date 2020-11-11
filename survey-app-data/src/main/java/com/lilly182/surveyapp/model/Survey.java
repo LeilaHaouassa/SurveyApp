@@ -1,6 +1,7 @@
 package com.lilly182.surveyapp.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,9 +13,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 @Table(name = "surveys")
 public class Survey extends BaseEntity{
     @Column(name = "title")
@@ -23,12 +23,12 @@ public class Survey extends BaseEntity{
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "creation_date")
     private Date creationDate ;
-    @Temporal( TemporalType.DATE)
+    @Temporal( TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "postedOn")
     private Date postedOn ;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Temporal( TemporalType.DATE)
+    @Temporal( TemporalType.TIMESTAMP)
     @Column(name = "postedOff")
     private Date postedOff ;
     @Lob
@@ -37,5 +37,6 @@ public class Survey extends BaseEntity{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
     private Set<QuestionAndOption> questions = new HashSet<>();
 
-
+    public Survey() {
+    }
 }

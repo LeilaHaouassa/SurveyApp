@@ -13,10 +13,10 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.lilly182.surveyapp</groupId>
-    <artifactId>surveyapp</artifactId>
+    <groupId>com.lilly182.com.lilly182.surveyapp</groupId>
+    <artifactId>com.lilly182.surveyapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>surveyapp</name>
+    <name>com.lilly182.surveyapp</name>
     <description>Hopefully the last project</description>
 
     <properties>
