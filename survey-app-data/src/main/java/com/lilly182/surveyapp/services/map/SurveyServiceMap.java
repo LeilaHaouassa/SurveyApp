@@ -5,6 +5,7 @@ import com.lilly182.surveyapp.services.SurveyService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -37,6 +38,11 @@ public class SurveyServiceMap extends AbstractMapService<Survey,Long> implements
 
     @Override
     public Iterable<Survey> listForAdmin() {
+        return null;
+    }
+
+    @Override
+    public List<Survey> findAllByTitleLike(String title) {
         return null;
     }
 }

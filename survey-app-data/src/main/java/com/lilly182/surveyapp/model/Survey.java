@@ -1,5 +1,6 @@
 package com.lilly182.surveyapp.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
 
 
 @Table(name = "surveys")
@@ -38,5 +40,14 @@ public class Survey extends BaseEntity{
     private Set<QuestionAndOption> questions = new HashSet<>();
 
     public Survey() {
+    }
+
+    public Survey(String title, Date creationDate, Date postedOn, Date postedOff, String description, Set<QuestionAndOption> questions) {
+        this.title = title;
+        this.creationDate = creationDate;
+        this.postedOn = postedOn;
+        this.postedOff = postedOff;
+        this.description = description;
+        this.questions = questions;
     }
 }
