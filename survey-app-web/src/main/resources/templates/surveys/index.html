@@ -13,6 +13,7 @@
         <th style="width: 90px;">ID</th>
         <th style="width: 90px;">Title</th>
         <th style="width: 90px;">Description</th>
+
         <th style="width: 90px;">Posted On</th>
         <th style="width: 90px;">Posted Off</th>
 
@@ -21,14 +22,20 @@
     <tbody>
     <tr th:each="survey : ${surveys}">
         <td th:text="${survey?.getId()}">1</td>
-        <td th:text="${survey?.getTitle()}">IDK</td>
+        <td>
+            <a th:href="@{/surveys/__${survey.id}__}" th:text="${survey?.getTitle()}"></a>
+        </td>
         <td th:text="${survey?.getDescription()}">what's your favourite color?</td>
-        <td th:text="${survey?.getPostedOn()}">1</td>
-        <td th:text="${survey?.getPostedOff()}">1</td>
+<!--        <td th:text="${#dates.format(survey?.getCreationDate(), 'dd-MM-yyyy HH:mm')}">1</td>-->
+        <td th:text="${#dates.format(survey?.getPostedOn(), 'dd-MM-yyyy')}">1</td>
+        <td th:text="${#dates.format(survey?.getPostedOff(), 'dd-MM-yyyy')}">1</td>
 
     </tr>
     </tbody>
 
 </table>
+
+    <br />
+    <a class="btn btn-default" th:href="@{/surveys/new}">Add Survey</a>
 </body>
 </html>

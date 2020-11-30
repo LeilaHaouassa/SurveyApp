@@ -1,0 +1,48 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'surveys')}">
+
+<body>
+
+<h2>
+    <th:block th:if="${option['new']}">New </th:block>
+    Option
+</h2>
+
+<b>Question</b>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Text</th>
+        <th>Type</th>
+        <th>Survey</th>
+    </tr>
+    </thead>
+    <tr>
+        <td th:text="${question.text}">
+        </td>
+
+        <td th:text="${question.questionType}">
+        </td>
+        <td
+                th:text="${question.survey?.title}">
+        </td>
+    </tr>
+</table>
+<form th:object="${option}" class="form-horizontal" method="post">
+    <div class="form-group has-feedback">
+
+        <input
+                th:replace="~{fragments/inputField :: input ('Content', 'content', 'text')}" />
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="hidden" name="questionId" th:value="${question.id}" />
+            <button class="btn btn-default" type="submit">Add Option</button>
+        </div>
+    </div>
+</form>
+
+</body>
+
+</html>

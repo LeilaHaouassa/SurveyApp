@@ -1,6 +1,6 @@
 package com.lilly182.surveyapp.bootstrap;
 
-import com.lilly182.surveyapp.model.QuestionAndOption;
+import com.lilly182.surveyapp.model.Question;
 import com.lilly182.surveyapp.model.QuestionType;
 import com.lilly182.surveyapp.model.Survey;
 import com.lilly182.surveyapp.services.QuestionService;
@@ -27,27 +27,34 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        Calendar cal = Calendar.getInstance();
+
         Survey survey = new Survey();
 
         survey.setTitle("Test");
         survey.setDescription("survey for test");
-        survey.setCreationDate(new Date());
+        //survey.setCreationDate(new Date());
         survey.setPostedOn(new Date());
-        survey.setPostedOff(new Date(2020, Calendar.OCTOBER,30));
 
-        QuestionAndOption question1= new QuestionAndOption();
+        cal.set(Calendar.YEAR, 2020);
+        cal.set(Calendar.MONTH, Calendar.NOVEMBER);
+        cal.set(Calendar.DAY_OF_MONTH, 30);
+        Date datePostedOff = cal.getTime();
+        survey.setPostedOff(datePostedOff);
+
+        Question question1= new Question();
 
         question1.setQuestionType(QuestionType.PARAGRAPH);
         question1.setText("question number 1");
         question1.setSurvey(survey);
 
-        QuestionAndOption question2= new QuestionAndOption();
+        Question question2= new Question();
 
         question2.setQuestionType(QuestionType.SHORT_ANSWER);
         question2.setText("question number 2");
         question2.setSurvey(survey);
 
-        QuestionAndOption question3= new QuestionAndOption();
+        Question question3= new Question();
 
         question3.setQuestionType(QuestionType.MULTIPLE_CHOICES);
         question3.setText("question number 3");
@@ -66,27 +73,33 @@ public class DataLoader implements CommandLineRunner {
 
         survey2.setTitle("Test 2");
         survey2.setDescription("survey for test 2");
-        survey2.setCreationDate(new Date());
-        survey2.setPostedOn(new Date());
-        survey2.setPostedOff(new Date(2020, Calendar.DECEMBER,30));
 
-        QuestionAndOption question21= new QuestionAndOption();
+        survey2.setPostedOn(new Date());
+
+        cal.set(Calendar.YEAR, 2020);
+        cal.set(Calendar.MONTH, Calendar.NOVEMBER);
+        cal.set(Calendar.DAY_OF_MONTH, 29);
+        Date datePostedOff2 = cal.getTime();
+        survey2.setPostedOff(datePostedOff2);
+
+
+        Question question21= new Question();
 
         question21.setQuestionType(QuestionType.SHORT_ANSWER);
         question21.setText("question number 1");
-        question21.setSurvey(survey);
+        question21.setSurvey(survey2);
 
-        QuestionAndOption question22= new QuestionAndOption();
+        Question question22= new Question();
 
         question22.setQuestionType(QuestionType.CHECKBOX);
         question22.setText("question number 2");
-        question22.setSurvey(survey);
+        question22.setSurvey(survey2);
 
-        QuestionAndOption question23= new QuestionAndOption();
+        Question question23= new Question();
 
         question23.setQuestionType(QuestionType.PARAGRAPH);
         question23.setText("question number 3");
-        question23.setSurvey(survey);
+        question23.setSurvey(survey2);
 
 
 

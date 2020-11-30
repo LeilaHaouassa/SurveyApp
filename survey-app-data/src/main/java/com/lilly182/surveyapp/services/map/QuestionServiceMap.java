@@ -1,6 +1,6 @@
 package com.lilly182.surveyapp.services.map;
 
-import com.lilly182.surveyapp.model.QuestionAndOption;
+import com.lilly182.surveyapp.model.Question;
 import com.lilly182.surveyapp.services.QuestionService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -9,24 +9,24 @@ import java.util.Set;
 
 @Service
 @Profile({"default","map"})
-public class QuestionServiceMap extends AbstractMapService<QuestionAndOption,Long> implements QuestionService {
+public class QuestionServiceMap extends AbstractMapService<Question,Long> implements QuestionService {
     @Override
-    public Set<QuestionAndOption> findAll() {
+    public Set<Question> findAll() {
         return super.findAll();
     }
 
     @Override
-    public QuestionAndOption findById(Long id) {
+    public Question findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public QuestionAndOption save(QuestionAndOption questionAndOption) {
+    public Question save(Question questionAndOption) {
         return super.save(questionAndOption);
     }
 
     @Override
-    public void delete(QuestionAndOption questionAndOption) {
+    public void delete(Question questionAndOption) {
         super.delete(questionAndOption);
     }
 

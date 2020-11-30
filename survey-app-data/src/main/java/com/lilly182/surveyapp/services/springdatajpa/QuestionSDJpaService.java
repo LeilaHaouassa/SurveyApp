@@ -1,6 +1,7 @@
 package com.lilly182.surveyapp.services.springdatajpa;
 
-import com.lilly182.surveyapp.model.QuestionAndOption;
+import com.lilly182.surveyapp.model.Question;
+import com.lilly182.surveyapp.repositories.OptionRepository;
 import com.lilly182.surveyapp.repositories.QuestionRepository;
 import com.lilly182.surveyapp.repositories.SurveyRepository;
 import com.lilly182.surveyapp.services.QuestionService;
@@ -16,35 +17,37 @@ public class QuestionSDJpaService implements QuestionService {
 
     private final SurveyRepository surveyRepository;
     private final QuestionRepository questionRepository;
+    private final OptionRepository optionRepository;
 
-    public QuestionSDJpaService(SurveyRepository surveyRepository, QuestionRepository questionRepository) {
+    public QuestionSDJpaService(SurveyRepository surveyRepository, QuestionRepository questionRepository, OptionRepository optionRepository) {
         this.surveyRepository = surveyRepository;
         this.questionRepository = questionRepository;
+        this.optionRepository = optionRepository;
     }
 
     @Override
-    public Set<QuestionAndOption> findAll() {
-        Set<QuestionAndOption> questionAndOptions = new HashSet<>();
-        questionRepository.findAll().forEach(questionAndOptions::add);
-        return questionAndOptions;
+    public Set<Question> findAll() {
+        Set<Question> questions = new HashSet<>();
+        questionRepository.findAll().forEach(questions::add);
+        return questions;
     }
 
     @Override
-    public QuestionAndOption findById(Long aLong) {
+    public Question findById(Long aLong) {
         return questionRepository.findById(aLong).orElse(null);
     }
 
     @Override
-    public QuestionAndOption save(QuestionAndOption questionAndOption) {
-        if(questionAndOption.getSurvey() != null) {
-            return questionRepository.save(questionAndOption);
+    public Question save(Question question) {
+        if(question.getSurvey() != null) {
+            return questionRepository.save(question);
         }else {
             throw new RuntimeException("Question without Survey!!");
         }
     }
 
     @Override
-    public void delete(QuestionAndOption object) {
+    public void delete(Question object) {
         questionRepository.delete(object);
     }
 

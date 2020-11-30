@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Builder
+
 
 
 @Table(name = "surveys")
@@ -22,32 +22,63 @@ public class Survey extends BaseEntity{
     @Column(name = "title")
     private String title;
     @CreationTimestamp
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "creation_date")
-    private Date creationDate ;
-    @Temporal( TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private final Date creationDate ;
+    @Temporal( TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "postedOn")
     private Date postedOn ;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Temporal( TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal( TemporalType.DATE)
     @Column(name = "postedOff")
     private Date postedOff ;
     @Lob
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
-    private Set<QuestionAndOption> questions = new HashSet<>();
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "survey")
+    private Set<Question> questions = new HashSet<>();
 
     public Survey() {
+        creationDate = new Date();
     }
-
-    public Survey(String title, Date creationDate, Date postedOn, Date postedOff, String description, Set<QuestionAndOption> questions) {
+    @Builder
+    public Survey(String title,  Date postedOn, Date postedOff, String description, Set<Question> questions) {
         this.title = title;
-        this.creationDate = creationDate;
+        this.creationDate = new Date();
         this.postedOn = postedOn;
         this.postedOff = postedOff;
         this.description = description;
-        this.questions = questions;
+        if(questions != null){
+            this.questions = questions;
+        }
+    }
+
+    /**
+     * Return the Question with the given text, or null if none found for this Survey.
+     * @param text to test
+     * @return true if question text is already in use
+     */
+    public Question getQuestion(String text) {
+        return getQuestion(text, false);
+    }
+
+    /**
+     * Return the Question with the given text, or null if none found for this Survey.
+     * @param text to test
+     * @return true if question text is already in use
+     */
+    public Question getQuestion(String text, boolean ignoreNew) {
+        text = text.toLowerCase();
+        for (Question question : questions) {
+            if (!ignoreNew || !question.isNew()) {
+                String compText = question.getText();
+                compText = compText.toLowerCase();
+                if (compText.equals(text)) {
+                    return question;
+                }
+            }
+        }
+        return null;
     }
 }

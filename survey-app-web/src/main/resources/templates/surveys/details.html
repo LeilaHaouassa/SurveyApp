@@ -2,6 +2,14 @@
 
 <html xmlns:th="https://www.thymeleaf.org"
       th:replace="~{fragments/layout :: layout (~{::body},'surveys')}">
+<head>
+    <script>
+        function addInputLine() {
+            var node = document.createElement("input");                 // Create an <input> node
+            document.getElementById("parentElement").appendChild(node);     // Append it to the parent
+        }
+    </script>
+</head>
 
 <body>
 
@@ -16,15 +24,15 @@
     </tr>
     <tr>
         <th>Date of Creation</th>
-        <td th:text="*{creationDate}"></td>
+        <td th:text="*{#dates.format(creationDate, 'dd-MM-yyyy HH:mm')}"></td>
     </tr>
     <tr>
         <th>PostedOn</th>
-        <td th:text="*{postedOn}"></td>
+        <td th:text="*{#dates.format(postedOn, 'dd-MM-yyyy')}"></td>
     </tr>
     <tr>
         <th>PostedOff</th>
-        <td th:text="*{postedOff}"></td>
+        <td th:text="*{#dates.format(postedOff, 'dd-MM-yyyy')}"></td>
     </tr>
     <tr>
         <th>Description</th>
@@ -64,7 +72,7 @@
                 </thead>
                 <tr th:each="option : ${question.options}">
 
-                    <td th:text="${option}"></td>
+                    <td th:text="${option.getContent()}"></td>
                 </tr>
                 <tr>
                     <td><a
@@ -72,7 +80,8 @@
                         Question</a></td>
                     <td><a
                             th:href="@{{surveyId}/questions/{questionId}/options/new(surveyId=${survey.id},questionId=${question.id})}">Add
-                        Option</a></td>
+                        Option</a>
+                    </td>
                 </tr>
             </table>
         </td>
@@ -81,5 +90,7 @@
 </table>
 
 </body>
+
+
 
 </html>
